@@ -1,0 +1,25 @@
+name: educacion
+description: Pascual Cano
+base theme: classy
+package: Custom
+type: theme
+version: 1.1
+core: 8.x
+libraries:
+  - educacion/theme
+  - educacion/base
+regions:
+  admin_tabs: 'Tabs and messages'
+  top: 'Page top'
+  content: 'Main content'
+  bottom: 'Page bottom'
+  footer: 'Footer'
+
+favicon:
+  use_default: 1
+  path: 'favicon.ico'
+
+stylesheets-remove:
+  - 'core/themes/classy/css/components/menu.css'
+  - 'core/themes/classy/css/components/form.css'
+  - 'modules/contrib/webform/css/webform.form.css'

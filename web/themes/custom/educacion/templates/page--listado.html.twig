@@ -1,0 +1,25 @@
+{% include directory ~ '/templates/parts/svg.twig' %}
+
+
+<div class="layout-container">
+
+  {% include directory ~ '/templates/parts/header.twig' %}
+
+  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+  <main role="main" class="main">
+   <div class="row"><div class="column">{{ page.admin_tabs }}</div></div>
+{{ page.content }}
+<form class="actividades-form">
+</form>
+<div class="row filtered-view" id="listado"></div>
+{{ page.bottom }}
+<br><br><br>
+
+
+
+  </main>
+  {{ promo_panel }} {% include directory ~ '/templates/parts/footer.twig' %}
+
+</div>{# /.layout-container #}
+

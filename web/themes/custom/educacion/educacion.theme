@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the Educacion theme.
+ */
+
+ /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function educacion_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function educacion_preprocess_page(&$variables) {
+  $variables['page_title'] = $variables['page']['#title'];
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for node templates.
+ */
+function educacion_preprocess_node(&$variables) {
+
+  if (!$variables['view_mode']) {
+    return;
+  }
+  $node = $variables['node'];
+
+  switch ($node->getType()) {
+    case 'actividad':
+      $cuando = $node->get("field_cuando")->getValue();      
+      $hora = $node->get("field_hora")->getValue();      
+      $start = strtotime($cuando[0]['value']);
+      $end = strtotime($cuando[0]['end_value']);
+      $start_month = \Drupal::service('date.formatter')->format($start, '', 'M', NULL, 'es');
+      $start_year = date('Y',$start);
+      if($start==$end){
+        $formatted =   \Drupal::service('date.formatter')->format($start, '', 'l, j \d\e F', NULL, 'es');
+        $formatted .= isset($hora[0]) ? '. '.date('G:i\h.',$hora[0]['value']) : '';                
+      } else {        
+        $end_month = \Drupal::service('date.formatter')->format($end, '', 'M', NULL, 'es');
+        $end_day = date('j',$end);
+        if($start_month==$end_month) $formatted = \Drupal::service('date.formatter')->format($start, '', '\D\e\l j \a\l '.$end_day.' \d\e F', NULL, 'es');
+        else $formatted = \Drupal::service('date.formatter')->format($start, '', '\D\e\l j \d\e M. \a\l ', NULL, 'es').\Drupal::service('date.formatter')->format($end, '', 'j \d\e M.', NULL, 'es');
+      }
+      $variables['preprocessed_cuando'] = $formatted;
+      $variables['preprocessed_anno'] = $start_year;
+      $variables['preprocessed_mes'] = $start_month;
+      break;
+    case 'listado':
+      $listado_view = views_embed_view('listado', 'rest_export_1');
+      $variables['preprocessed_actividades_data'] = \Drupal\Core\Render\Markup::create(\Drupal::service('renderer')->render($listado_view)->__toString());
+      break;
+  }
+}

@@ -1,0 +1,97 @@
+
+.centered-panel{
+    max-width:500px;
+    margin:2em auto;
+}
+
+.eq-height-colour {
+    position: relative;
+    min-height:300px;
+}
+
+.eq-height-colour p{
+    font-size:1.1rem;
+}
+
+.eq-height-colour__inner {
+    padding: 1.5rem 1rem;    
+}
+
+.eq-height-colour__inner h2{
+    margin: 0 0 0.25em;
+    font-size:1.6rem;
+}
+
+.eq-height-colour__inner h3{
+    margin-top:0;
+}
+
+.eq-height-colour::before {
+    content: '';
+    position: absolute;
+    left: 0.625rem;
+    right: 0.625rem;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.eq-height-colour--yellow::before {
+    background: $yellow;
+}
+
+.eq-height-colour--grey::before {
+    background: $light-gray;
+    /*background: $light-gray url(../img/arts-science-bg.svg) no-repeat center center;*/
+}
+
+.eq-height-colour .button{
+    font-weight:bold;
+    font-size:1rem;
+    margin-top:20px;
+}
+
+
+@include breakpoint(small only){
+    .centered-panel .column{
+        padding:0;
+    }
+    .eq-height-colour::before {
+        left: 0;
+        right: 0;
+    }    
+    .eq-height-colour .button{
+        display:block;
+        margin:40px auto 20px;
+    }    
+}
+
+@include breakpoint(medium){
+  
+    .eq-height-colour::before {
+        left:0.9375rem;
+        right:0.9375rem;
+    }
+}
+
+@include breakpoint(large){
+
+    .centered-panel{
+        max-width:1300px;
+    }
+    .eq-height-colour__inner {
+        padding: 2.5rem;        
+    }
+
+    .eq-height-colour .button{
+        margin-top:40px;
+    }    
+      
+}
+
+@include breakpoint(xlarge){
+    .eq-height-colour__inner h2{
+        font-size:2.2rem;
+        letter-spacing: -1px;
+    } 
+}

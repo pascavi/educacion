@@ -1,0 +1,4 @@
+[0910/173547:ERROR:process_reader_win.cc(142)] SuspendThread: Acceso denegado. (0x5)
+[0910/173547:ERROR:exception_snapshot_win.cc(88)] thread ID 6256 not found in process
+[0910/173547:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::InitializeException failed
+[0910/173547:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess, ntstatus=-1073741558

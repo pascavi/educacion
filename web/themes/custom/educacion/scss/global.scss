@@ -1,0 +1,117 @@
+@import '_settings';
+@import 'foundation';
+
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+@include foundation-visibility-classes;
+@include foundation-button;
+
+@import 'header';
+@import 'video-banner';
+@import 'text-row';
+@import 'centered-panel';
+@import 'organizers';
+
+
+/*general */
+
+html {
+  font-family: $body-font-family;
+}
+
+
+*,
+*::before,
+*::after { 
+  box-sizing: border-box;
+}
+
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.7em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $header-font-family;
+    color:$blue;
+}
+
+h1{
+    font-size:1.8rem;
+    line-height:1.2em;
+    width:100%;  
+    color: $green;
+}
+
+section.page-title{
+    text-align:center;
+    max-width:650px;
+    margin:20px auto 50px;    
+}
+
+h2 {
+    font-size: 1.8rem;
+    line-height: 1em;
+    margin-bottom: 1em;
+    letter-spacing: -0.25px;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+
+.button {
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: $header-font-family;
+}
+
+a:link,a:visited{
+    color:$green;
+    text-decoration: underlined;
+}
+
+a:hover, a:active, a:focus{
+    color:$green;
+    text-decoration: none;
+}
+
+.svg-container {
+    display: none;
+}
+
+.column.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.breadcrumb{
+    font-size:0.9rem;
+} 
+
+.tabs{
+    font-family: $header-font-family;
+}
+
+
+@include breakpoint(medium){
+    p {        
+        font-size: 1.1rem;
+    }    
+
+    h1{
+        font-size:2rem;
+        line-height:1.2em;
+    }
+   
+}
+
+@include breakpoint(large){
+       
+}

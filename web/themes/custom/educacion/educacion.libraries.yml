@@ -1,0 +1,32 @@
+base:
+  version: 1.0.5
+  js:
+    js/lib/js.cookie.js: {}
+    js/lib/dragend.min.js: {}
+    js/navigation.js: {}
+    js/filtered-view.js: {}
+    js/global.js: {}
+    
+
+  css:
+    component:
+      css/global.css: {}
+
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+theme:
+  header: true
+  css:
+    theme:
+      https://fonts.googleapis.com/css?family=Domine|Open+Sans:400,600: { type: external }
+
+filtered-view:
+  js:
+    js/lib/jquery.typeahead.min.js: {}
+    js/filtered-view.js: {}
+  css:
+    component:
+      css/jquery.typeahead.min.css: {}
+
